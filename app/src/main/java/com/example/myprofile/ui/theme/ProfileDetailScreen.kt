@@ -8,7 +8,9 @@ import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.myprofile.models.ProfileDto
 
 
 @ExperimentalMaterial3Api
@@ -39,3 +41,18 @@ fun ProfileDetailScreen(viewModel: ProfileViewModel, profileId: Int, onBack: () 
         } ?: Text("Loading...")
     }
 }
+
+@Preview(showBackground = true)
+@Composable
+fun ProfileDetailPreview() {
+    val sample = ProfileDto(userId = 1, id = 1, title = "Sample Title", completed = true)
+    Surface {
+        Column(modifier = Modifier.padding(16.dp)) {
+            Text("Title: ${sample.title}", style = MaterialTheme.typography.titleLarge)
+            Text("Completed: ${sample.completed}")
+            Text("User ID: ${sample.userId}")
+            Text("ID: ${sample.id}")
+        }
+    }
+}
+

@@ -11,6 +11,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.myprofile.models.ProfileDto
 
 @Composable
 fun ProfileListScreen(
@@ -40,6 +41,25 @@ fun ProfileListScreen(
                         Text("Completed: ${profile.completed}")
                     }
                 }
+            }
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun ProfileListItemPreview() {
+    val sample = ProfileDto(userId = 1, id = 1, title = "Sample List Item", completed = false)
+    Surface(modifier = Modifier.fillMaxWidth()) {
+        Card(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            elevation = CardDefaults.cardElevation(4.dp)
+        ) {
+            Column(modifier = Modifier.padding(16.dp)) {
+                Text(sample.title, style = MaterialTheme.typography.titleMedium)
+                Text("Completed: ${sample.completed}")
             }
         }
     }
